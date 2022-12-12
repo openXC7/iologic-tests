@@ -66,6 +66,16 @@ module iserdes (
     );
 `endif
 
+    reg [19:0] r_count = 0;
+
+    always @(posedge(clk)) begin
+        r_count <= r_count + 1;
+    end
+
+    wire clk_slow, clk_slow_4x;
+    assign clk_slow = r_count[19];
+    assign clk_slow_4x = r_count[17];
+
     wire [7:0] deserialized;
     ISERDESE2 #(
       .DATA_RATE("DDR"),
@@ -77,9 +87,9 @@ module iserdes (
     ) iserdes_instance (
       .BITSLIP(1'd0),
       .CE1(1'd1),
-      .CLK(clkx4),
-      .CLKB((~clkx4)),
-      .CLKDIV(clk),
+      .CLK(clk_slow_4x),
+      .CLKB((~clk_slow_4x)),
+      .CLKDIV(clk_slow),
       .D(button),
       .RST(1'b0),
       .Q1(deserialized[7]),
