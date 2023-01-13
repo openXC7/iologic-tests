@@ -5,7 +5,7 @@ module iddr (
     input  wire clk_n,
     output wire led,
     output wire locked_led,
-    input  wire button,
+    input  wire [1:0] button,
     input  wire ddr_in0,
     input  wire ddr_in1,
     output wire clkout0, // externally connected to: ddr_in0
@@ -59,11 +59,11 @@ module iddr (
       .SRTYPE("SYNC")
     ) iddr_instance0 (
       .C(clkx2),
-      .CE(1'd1),
+      .CE(button[0]),
       .D(ddr_in0),
       .Q1(ddr0_q0),
       .Q2(ddr0_q1),
-      .R(button)
+      .R(~button[1])
     );
 
     IDDR #(
@@ -73,15 +73,15 @@ module iddr (
       .SRTYPE("ASYNC")
     ) iddr_instance1 (
       .C(clkx2),
-      .CE(1'd1),
+      .CE(button[0]),
       .D(ddr_in1),
       .Q1(ddr1_q0),
       .Q2(ddr1_q1),
-      .S(button)
+      .S(~button[1])
     );
 
-    assign locked_led = ~locked;
-    assign led = button;
+    assign locked_led = button[0];
+    assign led = button[1];
     assign clkout0 = clkx3_2;
     assign clkout1 = clkx3_2;
 endmodule

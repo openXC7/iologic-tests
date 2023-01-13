@@ -4,8 +4,11 @@ set_property IOSTANDARD DIFF_SSTL15 [get_ports {clk_p}]
 set_property LOC AC11 [get_ports clk_n]
 set_property IOSTANDARD DIFF_SSTL15 [get_ports {clk_n}]
 
-set_property LOC AD23 [get_ports button]
-set_property IOSTANDARD LVCMOS18 [get_ports {button}]
+set_property LOC C22 [get_ports button[0]]
+set_property IOSTANDARD LVCMOS18 [get_ports {button[0]}]
+
+set_property LOC AD23 [get_ports button[1]]
+set_property IOSTANDARD LVCMOS18 [get_ports {button[1]}]
 
 set_property LOC U9 [get_ports led]
 set_property IOSTANDARD LVCMOS15 [get_ports {led}]

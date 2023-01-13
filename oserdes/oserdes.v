@@ -6,7 +6,7 @@ module oserdes (
     output wire led,
     output wire locked_led,
     input  wire button,
-    output reg button_led,
+    output wire button_led,
     output wire diff_led_p,
     output wire diff_led_n,
     output wire serdes_out
