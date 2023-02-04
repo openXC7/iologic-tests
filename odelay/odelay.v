@@ -24,7 +24,7 @@ module odelay (
     wire locked;
 
     IDELAYCTRL IDELAYCTRL(
-      .REFCLK(clk_ibufg),
+      .REFCLK(clk_in),
       .RST(1'b0)
     );
 
@@ -50,7 +50,6 @@ module odelay (
     );
 
     wire delay_in;
-    (* LOC="OLOGIC_X1Y49", KEEP, DONT_TOUCH *)
     ODDR #(
       .DDR_CLK_EDGE("SAME_EDGE"),
       .INIT(1'b0),
@@ -64,7 +63,6 @@ module odelay (
       .Q(delay_in)
     );
 
-    (* LOC="ODELAY_X1Y49", KEEP, DONT_TOUCH *)
     ODELAYE2 #(
       .CINVCTRL_SEL("FALSE"),
       .DELAY_SRC("ODATAIN"),
