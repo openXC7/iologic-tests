@@ -2,12 +2,18 @@
 FPGA toolchain tests for the IO logic tiles (IOI)
 
 This repository contains several test designs to test the IO logic on Kintex devices.
+## ISERDESE2
+This primitive has been tested working in a DDR3 memory design:
+https://github.com/kintex-chatter/demo-projects/tree/main/litex-ddr-stlv7325
 
 ## OSERDESE2
 A basic test shows it seems to work as intended:
 
 ![code](https://user-images.githubusercontent.com/148607/206609485-e519deda-3246-4a83-9650-fc9f7380988c.png)
 ![Oscilloscope trace](https://github.com/kintex-chatter/iologic-tests/blob/main/images/OSERDESE2.png)
+
+This primitive has also been tested working in a DDR3 memory design:
+https://github.com/kintex-chatter/demo-projects/tree/main/litex-ddr-stlv7325
 
 ## IDDR
 Basic test works!
